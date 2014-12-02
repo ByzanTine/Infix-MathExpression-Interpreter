@@ -1,8 +1,8 @@
-
 #include "mathExpression.h"
 
-
-
+#include <stack>
+#include <ctype.h>
+#include <cstdlib>
 mathExpression::mathExpression(std::string expression)
 {
     this->expression = expression;

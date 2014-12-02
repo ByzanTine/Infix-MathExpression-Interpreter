@@ -2,10 +2,6 @@
 #define __MATH_EXPRESSION_PARSER__
 
 #include <string>
-#include <ctype.h>
-#include <stack>
-
-
 
 class mathExpression
 {
