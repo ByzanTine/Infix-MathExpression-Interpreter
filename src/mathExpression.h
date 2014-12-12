@@ -10,7 +10,8 @@ public:
     mathExpression(std::string expression);
     // Evalute, return the numeric result
     int evaluate();
-    
+		// evalute the result
+    int evaluate(std::string expression);
 private:
     // infix to postfix
     std::string infixToPostfix(std::string in_expression);

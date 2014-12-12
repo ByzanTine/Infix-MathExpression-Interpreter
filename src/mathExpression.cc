@@ -19,7 +19,13 @@ int mathExpression::evaluate()
     return retval;
 }
 
+int mathExpression::evaluate(std::string expression)
+{
+	  std::string post_expression = infixToPostfix(expression);
 
+	  int retval = evaluatePostfix(post_expression);
+	  return retval;
+}
 
 
 std::string mathExpression::infixToPostfix(std::string in_expression)
