@@ -7,7 +7,9 @@ class mathExpression
 {
 public:
     // Input is a infix notation, just a normal (2+3)*4
-    mathExpression(std::string expression);
+    mathExpression();
+		mathExpression(std::string expression);
+		mathExpression(const char* expression);
     // Evalute, return the numeric result
     int evaluate();
 		// evalute the result

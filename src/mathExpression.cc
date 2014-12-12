@@ -3,7 +3,13 @@
 #include <stack>
 #include <ctype.h>
 #include <cstdlib>
+mathExpression::mathExpression()
+{}
 mathExpression::mathExpression(std::string expression)
+{
+    this->expression = expression;
+}
+mathExpression::mathExpression(const char* expression)
 {
     this->expression = expression;
 }
@@ -11,18 +17,14 @@ mathExpression::mathExpression(std::string expression)
 int mathExpression::evaluate()
 {
     
-    std::string in_expression = this->expression;
-    std::string post_expression = infixToPostfix(in_expression);
-    
-    //CCLOG("Post_expression %s", post_expression.c_str());
+    std::string post_expression = infixToPostfix(expression);
     int retval = evaluatePostfix(post_expression);
     return retval;
 }
 
-int mathExpression::evaluate(std::string expression)
+int mathExpression::evaluate(std::string expression_)
 {
-	  std::string post_expression = infixToPostfix(expression);
-
+	  std::string post_expression = infixToPostfix(expression_);
 	  int retval = evaluatePostfix(post_expression);
 	  return retval;
 }
