@@ -131,7 +131,7 @@ std::string mathExpression::toPostfix(std::string infix)
 {
     std::string postfix;
     std::stack<char> operator_stack;
-    for(int i=0; i < (int)infix.length(); ) 
+    for(size_t i = 0; i < infix.length(); ) 
     {
        
         //if operand
@@ -153,13 +153,9 @@ std::string mathExpression::toPostfix(std::string infix)
             
             //if stack is empty
             if(operator_stack.empty()) 
-            {
-                
                 operator_stack.push(infix[i]);
-            }
- 
             //if stack not empty
-            else if(!operator_stack.empty()) 
+            else
             {
  
                 //if (
@@ -171,10 +167,9 @@ std::string mathExpression::toPostfix(std::string infix)
                 //if ) is encountered pop till ( to postfix
                 else if(infix[i]==')') 
                 {
- 
+										// push the highest precedence first 
                     while(operator_stack.top() != '(') 
                     {
- 
                         postfix.push_back(operator_stack.top());
                         operator_stack.pop();
                     }
@@ -189,9 +184,8 @@ std::string mathExpression::toPostfix(std::string infix)
                         postfix.push_back(operator_stack.top());
                         operator_stack.pop();
                     }
- 
-                    if(operator_stack.empty() || !(isHigher(operator_stack.top(),infix[i])))
-                        operator_stack.push(infix[i]);
+										// result in stack empty or the precedence is higher than stack top 
+                    operator_stack.push(infix[i]);
                 }
             }
 
